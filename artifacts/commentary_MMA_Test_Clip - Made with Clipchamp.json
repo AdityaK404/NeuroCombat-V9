@@ -8,7 +8,7 @@
     {
       "timestamp": 0.03333333333333333,
       "frame_number": 1,
-      "text": "Simultaneous strikes! The intensity is rising!",
+      "text": "An explosive exchange! The crowd would be on their feet!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -16,7 +16,7 @@
     {
       "timestamp": 0.2,
       "frame_number": 6,
-      "text": "Player 2 lands a crisp jab!",
+      "text": "Player 2 snaps out a jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -24,7 +24,7 @@
     {
       "timestamp": 0.23333333333333334,
       "frame_number": 7,
-      "text": "Player 2 probes with the jab.",
+      "text": "Player 2 throws a quick jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -32,7 +32,7 @@
     {
       "timestamp": 0.26666666666666666,
       "frame_number": 8,
-      "text": "Player 2 snaps out a jab!",
+      "text": "Player 2 lands a crisp jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -48,7 +48,7 @@
     {
       "timestamp": 0.4,
       "frame_number": 12,
-      "text": "Player 2 throws a quick jab!",
+      "text": "A clean jab from Player 2!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -56,7 +56,7 @@
     {
       "timestamp": 0.5,
       "frame_number": 15,
-      "text": "Player 2 fires off a sharp jab!",
+      "text": "Player 2 probes with the jab.",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -64,7 +64,7 @@
     {
       "timestamp": 0.5333333333333333,
       "frame_number": 16,
-      "text": "A fierce exchange between both players!",
+      "text": "An explosive exchange! The crowd would be on their feet!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.589
@@ -72,7 +72,7 @@
     {
       "timestamp": 0.5666666666666667,
       "frame_number": 17,
-      "text": "A clean jab from Player 2!",
+      "text": "Player 2 fires off a sharp jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -88,7 +88,7 @@
     {
       "timestamp": 0.7,
       "frame_number": 21,
-      "text": "Player 2 lands a crisp jab!",
+      "text": "Player 2 snaps out a jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -96,7 +96,7 @@
     {
       "timestamp": 0.7666666666666667,
       "frame_number": 23,
-      "text": "Player 2 lands a crisp jab!",
+      "text": "Player 2 probes with the jab.",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -104,7 +104,7 @@
     {
       "timestamp": 0.8333333333333334,
       "frame_number": 25,
-      "text": "An explosive exchange! The crowd would be on their feet!",
+      "text": "A fierce exchange between both players!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.569
@@ -112,7 +112,7 @@
     {
       "timestamp": 1.0333333333333334,
       "frame_number": 31,
-      "text": "Both fighters commit to the attack!",
+      "text": "What a clash! Both players engage!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -120,7 +120,7 @@
     {
       "timestamp": 1.2666666666666666,
       "frame_number": 38,
-      "text": "An explosive exchange! The crowd would be on their feet!",
+      "text": "Both fighters commit to the attack!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -128,7 +128,7 @@
     {
       "timestamp": 1.3666666666666667,
       "frame_number": 41,
-      "text": "Watch out! Roundhouse kick by Player 1!",
+      "text": "Devastating roundhouse from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -136,7 +136,7 @@
     {
       "timestamp": 1.4,
       "frame_number": 42,
-      "text": "Devastating roundhouse from Player 1!",
+      "text": "Player 1 commits to the roundhouse kick!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -144,7 +144,7 @@
     {
       "timestamp": 1.4333333333333333,
       "frame_number": 43,
-      "text": "Player 1 unleashes a spinning roundhouse!",
+      "text": "Player 1 goes high with a roundhouse!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -160,7 +160,7 @@
     {
       "timestamp": 1.7666666666666666,
       "frame_number": 53,
-      "text": "Both fighters commit to the attack!",
+      "text": "Both players refuse to back down!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.55
@@ -168,7 +168,7 @@
     {
       "timestamp": 1.8666666666666667,
       "frame_number": 56,
-      "text": "Player 1 goes high with a roundhouse!",
+      "text": "Watch out! Roundhouse kick by Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -176,7 +176,7 @@
     {
       "timestamp": 1.9,
       "frame_number": 57,
-      "text": "Player 1 commits to the roundhouse kick!",
+      "text": "Player 1 unleashes a spinning roundhouse!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -192,7 +192,7 @@
     {
       "timestamp": 2.0,
       "frame_number": 60,
-      "text": "An explosive exchange! The crowd would be on their feet!",
+      "text": "A fierce exchange between both players!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.5814999999999999
@@ -200,7 +200,7 @@
     {
       "timestamp": 2.066666666666667,
       "frame_number": 62,
-      "text": "Player 1 probes with the jab.",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -208,7 +208,7 @@
     {
       "timestamp": 2.1,
       "frame_number": 63,
-      "text": "Player 1 commits to the roundhouse kick!",
+      "text": "Devastating roundhouse from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -224,7 +224,7 @@
     {
       "timestamp": 2.2666666666666666,
       "frame_number": 68,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -232,7 +232,7 @@
     {
       "timestamp": 2.3333333333333335,
       "frame_number": 70,
-      "text": "A clean jab from Player 1!",
+      "text": "Player 1 fires off a sharp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -240,7 +240,7 @@
     {
       "timestamp": 2.3666666666666667,
       "frame_number": 71,
-      "text": "Both fighters exchange blows!",
+      "text": "Simultaneous strikes! The intensity is rising!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.55
@@ -256,7 +256,7 @@
     {
       "timestamp": 2.533333333333333,
       "frame_number": 76,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -272,7 +272,7 @@
     {
       "timestamp": 2.6666666666666665,
       "frame_number": 80,
-      "text": "Player 2 lands a crisp jab!",
+      "text": "Player 2 probes with the jab.",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -280,7 +280,7 @@
     {
       "timestamp": 2.7,
       "frame_number": 81,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 probes with the jab.",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -288,7 +288,7 @@
     {
       "timestamp": 2.8,
       "frame_number": 84,
-      "text": "Both players refuse to back down!",
+      "text": "Both fighters commit to the attack!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -296,7 +296,7 @@
     {
       "timestamp": 2.9,
       "frame_number": 87,
-      "text": "Player 1 snaps out a jab!",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -320,7 +320,7 @@
     {
       "timestamp": 3.1333333333333333,
       "frame_number": 94,
-      "text": "Player 1 probes with the jab.",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -328,7 +328,7 @@
     {
       "timestamp": 3.2,
       "frame_number": 96,
-      "text": "Player 2 lands a crisp jab!",
+      "text": "Player 2 throws a quick jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -336,7 +336,7 @@
     {
       "timestamp": 3.2666666666666666,
       "frame_number": 98,
-      "text": "Player 1 unleashes a spinning roundhouse!",
+      "text": "Player 1 swings a roundhouse kick!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -344,7 +344,7 @@
     {
       "timestamp": 3.3666666666666667,
       "frame_number": 101,
-      "text": "Player 1 goes high with a roundhouse!",
+      "text": "Devastating roundhouse from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -352,7 +352,7 @@
     {
       "timestamp": 3.433333333333333,
       "frame_number": 103,
-      "text": "Devastating roundhouse from Player 1!",
+      "text": "Watch out! Roundhouse kick by Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -360,7 +360,7 @@
     {
       "timestamp": 3.466666666666667,
       "frame_number": 104,
-      "text": "A clean jab from Player 1!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -376,7 +376,7 @@
     {
       "timestamp": 3.6,
       "frame_number": 108,
-      "text": "Watch out! Roundhouse kick by Player 1!",
+      "text": "Player 1 unleashes a spinning roundhouse!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -384,7 +384,7 @@
     {
       "timestamp": 3.6666666666666665,
       "frame_number": 110,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 probes with the jab.",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -392,7 +392,7 @@
     {
       "timestamp": 3.7,
       "frame_number": 111,
-      "text": "Player 1 snaps out a jab!",
+      "text": "Player 1 fires off a sharp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -400,7 +400,7 @@
     {
       "timestamp": 3.7333333333333334,
       "frame_number": 112,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -408,7 +408,7 @@
     {
       "timestamp": 3.7666666666666666,
       "frame_number": 113,
-      "text": "Player 1 probes with the jab.",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -416,7 +416,7 @@
     {
       "timestamp": 3.8,
       "frame_number": 114,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -424,7 +424,7 @@
     {
       "timestamp": 3.8333333333333335,
       "frame_number": 115,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -432,7 +432,7 @@
     {
       "timestamp": 3.8666666666666667,
       "frame_number": 116,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -440,7 +440,7 @@
     {
       "timestamp": 3.9,
       "frame_number": 117,
-      "text": "Player 1 snaps out a jab!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -448,7 +448,7 @@
     {
       "timestamp": 3.933333333333333,
       "frame_number": 118,
-      "text": "A clean jab from Player 1!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -464,7 +464,7 @@
     {
       "timestamp": 4.0,
       "frame_number": 120,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -472,7 +472,7 @@
     {
       "timestamp": 4.033333333333333,
       "frame_number": 121,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 probes with the jab.",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -480,7 +480,7 @@
     {
       "timestamp": 4.066666666666666,
       "frame_number": 122,
-      "text": "A fierce exchange between both players!",
+      "text": "An explosive exchange! The crowd would be on their feet!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -488,7 +488,7 @@
     {
       "timestamp": 4.1,
       "frame_number": 123,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 fires off a sharp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -496,7 +496,7 @@
     {
       "timestamp": 4.2,
       "frame_number": 126,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 probes with the jab.",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -504,7 +504,7 @@
     {
       "timestamp": 4.233333333333333,
       "frame_number": 127,
-      "text": "Player 1 probes with the jab.",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -512,7 +512,7 @@
     {
       "timestamp": 4.266666666666667,
       "frame_number": 128,
-      "text": "Player 1 snaps out a jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -520,7 +520,7 @@
     {
       "timestamp": 4.3,
       "frame_number": 129,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -528,7 +528,7 @@
     {
       "timestamp": 4.333333333333333,
       "frame_number": 130,
-      "text": "Simultaneous strikes! The intensity is rising!",
+      "text": "Both fighters commit to the attack!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.5569999999999999
@@ -536,7 +536,7 @@
     {
       "timestamp": 4.366666666666666,
       "frame_number": 131,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -544,7 +544,7 @@
     {
       "timestamp": 4.4,
       "frame_number": 132,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -576,7 +576,7 @@
     {
       "timestamp": 4.533333333333333,
       "frame_number": 136,
-      "text": "Player 1 snaps out a jab!",
+      "text": "Player 1 fires off a sharp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -584,7 +584,7 @@
     {
       "timestamp": 4.566666666666666,
       "frame_number": 137,
-      "text": "Player 1 snaps out a jab!",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -624,7 +624,7 @@
     {
       "timestamp": 4.9,
       "frame_number": 147,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -632,7 +632,7 @@
     {
       "timestamp": 4.933333333333334,
       "frame_number": 148,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -640,7 +640,7 @@
     {
       "timestamp": 4.966666666666667,
       "frame_number": 149,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "Player 1 fires off a sharp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -656,7 +656,7 @@
     {
       "timestamp": 5.1,
       "frame_number": 153,
-      "text": "Watch out! Roundhouse kick by Player 1!",
+      "text": "Player 1 swings a roundhouse kick!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -672,7 +672,7 @@
     {
       "timestamp": 5.2,
       "frame_number": 156,
-      "text": "A clean jab from Player 1!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -680,7 +680,7 @@
     {
       "timestamp": 5.233333333333333,
       "frame_number": 157,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -688,7 +688,7 @@
     {
       "timestamp": 5.266666666666667,
       "frame_number": 158,
-      "text": "Player 1 probes with the jab.",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -696,7 +696,7 @@
     {
       "timestamp": 5.3,
       "frame_number": 159,
-      "text": "Player 1 snaps out a jab!",
+      "text": "Player 1 probes with the jab.",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -704,7 +704,7 @@
     {
       "timestamp": 5.333333333333333,
       "frame_number": 160,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -712,7 +712,7 @@
     {
       "timestamp": 5.366666666666666,
       "frame_number": 161,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -720,7 +720,7 @@
     {
       "timestamp": 5.4,
       "frame_number": 162,
-      "text": "Both fighters exchange blows!",
+      "text": "An explosive exchange! The crowd would be on their feet!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -728,7 +728,7 @@
     {
       "timestamp": 5.6,
       "frame_number": 168,
-      "text": "Both fighters exchange blows!",
+      "text": "Both players refuse to back down!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -736,7 +736,7 @@
     {
       "timestamp": 5.633333333333334,
       "frame_number": 169,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -744,7 +744,7 @@
     {
       "timestamp": 5.733333333333333,
       "frame_number": 172,
-      "text": "Player 2 snaps out a jab!",
+      "text": "Player 2 probes with the jab.",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -760,7 +760,7 @@
     {
       "timestamp": 5.833333333333333,
       "frame_number": 175,
-      "text": "Both fighters commit to the attack!",
+      "text": "They're trading shots! This is heating up!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.5814999999999999
@@ -776,7 +776,7 @@
     {
       "timestamp": 6.066666666666666,
       "frame_number": 182,
-      "text": "A fierce exchange between both players!",
+      "text": "Both fighters commit to the attack!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -784,7 +784,7 @@
     {
       "timestamp": 6.2,
       "frame_number": 186,
-      "text": "Devastating roundhouse from Player 1!",
+      "text": "Player 1 swings a roundhouse kick!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -792,7 +792,7 @@
     {
       "timestamp": 6.233333333333333,
       "frame_number": 187,
-      "text": "Watch out! Roundhouse kick by Player 1!",
+      "text": "Devastating roundhouse from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -808,7 +808,7 @@
     {
       "timestamp": 6.3,
       "frame_number": 189,
-      "text": "They're trading shots! This is heating up!",
+      "text": "What a clash! Both players engage!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.725
@@ -824,7 +824,7 @@
     {
       "timestamp": 6.533333333333333,
       "frame_number": 196,
-      "text": "They're trading shots! This is heating up!",
+      "text": "Simultaneous strikes! The intensity is rising!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -832,7 +832,7 @@
     {
       "timestamp": 6.566666666666666,
       "frame_number": 197,
-      "text": "Player 2 probes with the jab.",
+      "text": "Player 2 lands a crisp jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -840,7 +840,7 @@
     {
       "timestamp": 6.6,
       "frame_number": 198,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -848,7 +848,7 @@
     {
       "timestamp": 6.633333333333334,
       "frame_number": 199,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -856,7 +856,7 @@
     {
       "timestamp": 6.7,
       "frame_number": 201,
-      "text": "Player 1 throws a quick jab!",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -864,7 +864,7 @@
     {
       "timestamp": 6.733333333333333,
       "frame_number": 202,
-      "text": "They're trading shots! This is heating up!",
+      "text": "What a clash! Both players engage!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -872,7 +872,7 @@
     {
       "timestamp": 6.833333333333333,
       "frame_number": 205,
-      "text": "Player 2 snaps out a jab!",
+      "text": "Player 2 probes with the jab.",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -880,7 +880,7 @@
     {
       "timestamp": 6.866666666666666,
       "frame_number": 206,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -896,7 +896,7 @@
     {
       "timestamp": 6.933333333333334,
       "frame_number": 208,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -904,7 +904,7 @@
     {
       "timestamp": 6.966666666666667,
       "frame_number": 209,
-      "text": "Both fighters commit to the attack!",
+      "text": "Both players refuse to back down!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -912,7 +912,7 @@
     {
       "timestamp": 7.133333333333334,
       "frame_number": 214,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 probes with the jab.",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -920,7 +920,7 @@
     {
       "timestamp": 7.166666666666667,
       "frame_number": 215,
-      "text": "Both fighters commit to the attack!",
+      "text": "Simultaneous strikes! The intensity is rising!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -928,7 +928,7 @@
     {
       "timestamp": 7.2,
       "frame_number": 216,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -944,7 +944,7 @@
     {
       "timestamp": 7.3,
       "frame_number": 219,
-      "text": "Player 2 probes with the jab.",
+      "text": "Player 2 lands a crisp jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -960,7 +960,7 @@
     {
       "timestamp": 7.433333333333334,
       "frame_number": 223,
-      "text": "They're trading shots! This is heating up!",
+      "text": "Simultaneous strikes! The intensity is rising!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.569
@@ -968,7 +968,7 @@
     {
       "timestamp": 7.566666666666666,
       "frame_number": 227,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -976,7 +976,7 @@
     {
       "timestamp": 7.6,
       "frame_number": 228,
-      "text": "Player 1 probes with the jab.",
+      "text": "Player 1 fires off a sharp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -984,7 +984,7 @@
     {
       "timestamp": 7.633333333333334,
       "frame_number": 229,
-      "text": "Player 1 snaps out a jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -992,7 +992,7 @@
     {
       "timestamp": 7.666666666666667,
       "frame_number": 230,
-      "text": "Player 1 snaps out a jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1000,7 +1000,7 @@
     {
       "timestamp": 7.7,
       "frame_number": 231,
-      "text": "A clean jab from Player 1!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1008,7 +1008,7 @@
     {
       "timestamp": 7.733333333333333,
       "frame_number": 232,
-      "text": "A clean jab from Player 1!",
+      "text": "Player 1 fires off a sharp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1016,7 +1016,7 @@
     {
       "timestamp": 7.766666666666667,
       "frame_number": 233,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 probes with the jab.",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1024,7 +1024,7 @@
     {
       "timestamp": 7.8,
       "frame_number": 234,
-      "text": "Both fighters exchange blows!",
+      "text": "Both fighters commit to the attack!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -1032,7 +1032,7 @@
     {
       "timestamp": 7.833333333333333,
       "frame_number": 235,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1040,7 +1040,7 @@
     {
       "timestamp": 7.9,
       "frame_number": 237,
-      "text": "A clean jab from Player 1!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1048,7 +1048,7 @@
     {
       "timestamp": 7.966666666666667,
       "frame_number": 239,
-      "text": "Player 1 snaps out a jab!",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1056,7 +1056,7 @@
     {
       "timestamp": 8.0,
       "frame_number": 240,
-      "text": "What a clash! Both players engage!",
+      "text": "An explosive exchange! The crowd would be on their feet!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -1064,7 +1064,7 @@
     {
       "timestamp": 8.1,
       "frame_number": 243,
-      "text": "Player 2 snaps out a jab!",
+      "text": "Player 2 throws a quick jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -1072,7 +1072,7 @@
     {
       "timestamp": 8.166666666666666,
       "frame_number": 245,
-      "text": "Player 2 fires off a sharp jab!",
+      "text": "A clean jab from Player 2!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -1080,7 +1080,7 @@
     {
       "timestamp": 8.2,
       "frame_number": 246,
-      "text": "Player 1 probes with the jab.",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1088,7 +1088,7 @@
     {
       "timestamp": 8.233333333333333,
       "frame_number": 247,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1096,7 +1096,7 @@
     {
       "timestamp": 8.266666666666667,
       "frame_number": 248,
-      "text": "They're trading shots! This is heating up!",
+      "text": "Simultaneous strikes! The intensity is rising!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -1104,7 +1104,7 @@
     {
       "timestamp": 8.3,
       "frame_number": 249,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1112,7 +1112,7 @@
     {
       "timestamp": 8.333333333333334,
       "frame_number": 250,
-      "text": "A clean jab from Player 1!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1120,7 +1120,7 @@
     {
       "timestamp": 8.366666666666667,
       "frame_number": 251,
-      "text": "Player 1 snaps out a jab!",
+      "text": "Player 1 fires off a sharp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1128,7 +1128,7 @@
     {
       "timestamp": 8.433333333333334,
       "frame_number": 253,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 probes with the jab.",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1136,7 +1136,7 @@
     {
       "timestamp": 8.466666666666667,
       "frame_number": 254,
-      "text": "Simultaneous strikes! The intensity is rising!",
+      "text": "Both players refuse to back down!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -1144,7 +1144,7 @@
     {
       "timestamp": 8.5,
       "frame_number": 255,
-      "text": "Watch out! Roundhouse kick by Player 1!",
+      "text": "Player 1 unleashes a spinning roundhouse!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.95
@@ -1160,7 +1160,7 @@
     {
       "timestamp": 8.6,
       "frame_number": 258,
-      "text": "Player 2 lands a crisp jab!",
+      "text": "Player 2 throws a quick jab!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.6
@@ -1168,7 +1168,7 @@
     {
       "timestamp": 8.7,
       "frame_number": 261,
-      "text": "What a clash! Both players engage!",
+      "text": "A fierce exchange between both players!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.589
@@ -1176,7 +1176,7 @@
     {
       "timestamp": 8.933333333333334,
       "frame_number": 268,
-      "text": "An explosive exchange! The crowd would be on their feet!",
+      "text": "They're trading shots! This is heating up!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -1192,7 +1192,7 @@
     {
       "timestamp": 9.2,
       "frame_number": 276,
-      "text": "Devastating roundhouse from Player 2!",
+      "text": "Watch out! Roundhouse kick by Player 2!",
       "event_type": "action",
       "player": 2,
       "confidence": 0.95
@@ -1200,7 +1200,7 @@
     {
       "timestamp": 9.333333333333334,
       "frame_number": 280,
-      "text": "What a clash! Both players engage!",
+      "text": "Both fighters exchange blows!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.745
@@ -1216,7 +1216,7 @@
     {
       "timestamp": 9.6,
       "frame_number": 288,
-      "text": "Player 1 probes with the jab.",
+      "text": "A clean jab from Player 1!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1224,7 +1224,7 @@
     {
       "timestamp": 9.633333333333333,
       "frame_number": 289,
-      "text": "A clean jab from Player 1!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1232,7 +1232,7 @@
     {
       "timestamp": 9.666666666666666,
       "frame_number": 290,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1240,7 +1240,7 @@
     {
       "timestamp": 9.733333333333333,
       "frame_number": 292,
-      "text": "What a clash! Both players engage!",
+      "text": "Simultaneous strikes! The intensity is rising!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.569
@@ -1256,7 +1256,7 @@
     {
       "timestamp": 10.133333333333333,
       "frame_number": 304,
-      "text": "A fierce exchange between both players!",
+      "text": "An explosive exchange! The crowd would be on their feet!",
       "event_type": "clash",
       "player": null,
       "confidence": 0.6
@@ -1264,7 +1264,7 @@
     {
       "timestamp": 10.166666666666666,
       "frame_number": 305,
-      "text": "Player 1 throws a quick jab!",
+      "text": "Player 1 lands a crisp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1272,7 +1272,7 @@
     {
       "timestamp": 10.2,
       "frame_number": 306,
-      "text": "Player 1 snaps out a jab!",
+      "text": "Player 1 fires off a sharp jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1288,7 +1288,7 @@
     {
       "timestamp": 10.266666666666667,
       "frame_number": 308,
-      "text": "Player 1 fires off a sharp jab!",
+      "text": "Player 1 probes with the jab.",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1304,7 +1304,7 @@
     {
       "timestamp": 10.4,
       "frame_number": 312,
-      "text": "Player 1 lands a crisp jab!",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1312,7 +1312,7 @@
     {
       "timestamp": 10.433333333333334,
       "frame_number": 313,
-      "text": "Player 1 probes with the jab.",
+      "text": "Player 1 snaps out a jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
@@ -1328,7 +1328,7 @@
     {
       "timestamp": 10.5,
       "frame_number": 315,
-      "text": "Player 1 probes with the jab.",
+      "text": "Player 1 throws a quick jab!",
       "event_type": "action",
       "player": 1,
       "confidence": 0.6
