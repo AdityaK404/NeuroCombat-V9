@@ -1,721 +1,408 @@
 """
-Commentary Engine V2 - NeuroCombat Real-Time Fight Commentary
-==============================================================
+Commentary Generation Engine for NeuroCombat - V2 FIXED
+=======================================================
 
-Generates natural, context-aware commentary for MMA fight analysis.
+NO DUPLICATES - Generates clean, distinct commentary lines
 
 Features:
-- Template-based generation with Markov-style variety
-- Clash detection and defensive phase recognition
-- Confidence-based phrasing
-- Timestamp calculation from frame numbers
-- Optional Text-to-Speech (TTS) integration
-- JSON and text export
-
-Author: NeuroCombat Team
-Date: November 12, 2025
+- One commentary line per distinct move
+- Temporal awareness
+- Natural language variety
+- Player-specific commentary
 """
 
 import json
 import random
 from pathlib import Path
-from typing import List, Dict, Tuple, Optional, Set
+from typing import List, Dict, Optional
 from dataclasses import dataclass, asdict
-from collections import deque
-import logging
 
-# Optional TTS support
-try:
-    import pyttsx3
-    TTS_AVAILABLE = True
-except ImportError:
-    TTS_AVAILABLE = False
-    logging.warning("pyttsx3 not available. TTS functionality disabled.")
-
-
-# ==============================================================================
-# DATA STRUCTURES
-# ==============================================================================
 
 @dataclass
 class CommentaryLine:
-    """Represents a single line of commentary."""
-    timestamp: float          # Time in seconds
-    frame_number: int         # Frame index
-    text: str                 # Commentary text
-    event_type: str          # "action", "clash", "defensive", "analysis"
-    player: Optional[int]    # Which player (1 or 2), None for both
-    confidence: float        # Average confidence of moves involved
-    
-    def __str__(self) -> str:
-        """Format for display."""
-        return f"[{self.timestamp:.1f}s] {self.text}"
+    """Single commentary line"""
+    text: str
+    timestamp: float
+    player: Optional[int]
+    confidence: float
+    move_type: Optional[str] = None
 
-
-@dataclass
-class CommentaryContext:
-    """Tracks recent fight context to avoid repetitive commentary."""
-    recent_moves_p1: deque    # Last N moves by player 1
-    recent_moves_p2: deque    # Last N moves by player 2
-    last_templates_used: deque  # Last N templates to avoid repetition
-    consecutive_neutrals: int   # Track boring stretches
-    last_clash_frame: int      # Prevent spam on multi-frame clashes
-
-
-# ==============================================================================
-# COMMENTARY ENGINE
-# ==============================================================================
 
 class CommentaryEngine:
-    """
-    Generates natural, varied commentary for MMA fight sequences.
-    
-    Uses template-based generation with contextual awareness to produce
-    engaging, non-repetitive commentary that adapts to fight dynamics.
-    """
-    
-    # Commentary templates organized by move type
-    MOVE_TEMPLATES = {
-        "jab": [
-            "Player {p} throws a quick jab!",
-            "Player {p} fires off a sharp jab!",
-            "Player {p} probes with the jab.",
-            "A clean jab from Player {p}!",
-            "Player {p} snaps out a jab!",
-            "Player {p} lands a crisp jab!"
-        ],
-        "cross": [
-            "Player {p} throws a powerful cross!",
-            "Player {p} unleashes a heavy cross!",
-            "A devastating cross from Player {p}!",
-            "Player {p} connects with a straight right!",
-            "Boom! Big cross by Player {p}!",
-            "Player {p} counters with a massive cross!"
-        ],
-        "front_kick": [
-            "Player {p} attempts a front kick!",
-            "Player {p} goes for the front kick!",
-            "A powerful front kick from Player {p}!",
-            "Player {p} pushes forward with a front kick!",
-            "Player {p} measures distance with a front kick!",
-            "Front kick! Player {p} keeps the pressure on!"
-        ],
-        "roundhouse_kick": [
-            "Player {p} swings a roundhouse kick!",
-            "Player {p} goes high with a roundhouse!",
-            "Devastating roundhouse from Player {p}!",
-            "Player {p} unleashes a spinning roundhouse!",
-            "Watch out! Roundhouse kick by Player {p}!",
-            "Player {p} commits to the roundhouse kick!"
-        ],
-        "uppercut": [
-            "Player {p} fires an uppercut!",
-            "Player {p} digs deep with an uppercut!",
-            "An explosive uppercut from Player {p}!",
-            "Player {p} goes to the body with an uppercut!",
-            "Uppercut! Player {p} finds the opening!",
-            "Player {p} lands a crushing uppercut!"
-        ],
-        "neutral": [
-            "Player {p} holds stance, reading the opponent.",
-            "Player {p} maintains distance.",
-            "Player {p} circles carefully.",
-            "Player {p} stays defensive.",
-            "Player {p} resets position."
-        ]
+    # Enhanced commentary templates with more variety
+    COMMENTARY_TEMPLATES = {
+        "jab": {
+            1: [
+                "Player 1 snaps out a sharp jab!",
+                "Quick jab from Player 1!",
+                "Player 1 with a stiff jab to the face!",
+                "Crisp jab lands for Player 1!",
+                "Player 1 fires off a measuring jab!",
+            ],
+            2: [
+                "Player 2 throws a probing jab!",
+                "Quick jab from Player 2!",
+                "Player 2 with a measured jab!",
+                "Sharp jab from Player 2!",
+                "Player 2 snaps the jab out!",
+            ]
+        },
+        "cross": {
+            1: [
+                "Player 1 throws a powerful cross!",
+                "Big cross from Player 1!",
+                "Player 1 with the straight right!",
+                "Powerful cross lands for Player 1!",
+                "Player 1 unloads the cross!",
+            ],
+            2: [
+                "Player 2 fires the cross!",
+                "Heavy cross from Player 2!",
+                "Player 2 with the power punch!",
+                "Straight cross from Player 2!",
+                "Player 2 lands a solid cross!",
+            ]
+        },
+        "hook": {
+            1: [
+                "Player 1 whips in a hook!",
+                "Devastating hook from Player 1!",
+                "Player 1 connects with the hook!",
+                "Wide hook from Player 1!",
+                "Player 1 throws a looping hook!",
+            ],
+            2: [
+                "Player 2 throws a vicious hook!",
+                "Big hook from Player 2!",
+                "Player 2 lands the hook!",
+                "Sweeping hook from Player 2!",
+                "Player 2 with a powerful hook!",
+            ]
+        },
+        "uppercut": {
+            1: [
+                "Player 1 digs in an uppercut!",
+                "Brutal uppercut from Player 1!",
+                "Player 1 goes upstairs!",
+                "Devastating uppercut by Player 1!",
+                "Player 1 with a rising uppercut!",
+            ],
+            2: [
+                "Player 2 with the uppercut!",
+                "Big uppercut from Player 2!",
+                "Player 2 lands clean uppercut!",
+                "Rising uppercut from Player 2!",
+                "Player 2 throws a nasty uppercut!",
+            ]
+        },
+        "front_kick": {
+            1: [
+                "Player 1 fires the front kick!",
+                "Push kick from Player 1!",
+                "Player 1 with the teep!",
+                "Front kick lands for Player 1!",
+                "Player 1 measures the distance with a front kick!",
+            ],
+            2: [
+                "Player 2 throws a front kick!",
+                "Teep from Player 2!",
+                "Player 2 with the push kick!",
+                "Front kick from Player 2!",
+                "Player 2 fires off a teep!",
+            ]
+        },
+        "roundhouse_kick": {
+            1: [
+                "Player 1 unleashes a roundhouse!",
+                "Big roundhouse from Player 1!",
+                "Player 1 with the power kick!",
+                "Massive roundhouse by Player 1!",
+                "Player 1 throws a thunderous roundhouse!",
+            ],
+            2: [
+                "Player 2 throws a roundhouse!",
+                "Brutal kick from Player 2!",
+                "Player 2 lands the roundhouse!",
+                "Power kick from Player 2!",
+                "Player 2 with a devastating roundhouse!",
+            ]
+        },
+        "side_kick": {
+            1: [
+                "Player 1 hits a side kick!",
+                "Side kick from Player 1!",
+                "Player 1 with lateral attack!",
+                "Sharp side kick by Player 1!",
+            ],
+            2: [
+                "Player 2 throws side kick!",
+                "Side kick lands for Player 2!",
+                "Player 2 with the sidekick!",
+                "Precision side kick from Player 2!",
+            ]
+        },
+        "takedown": {
+            1: [
+                "Player 1 shoots for the takedown!",
+                "Takedown attempt from Player 1!",
+                "Player 1 goes for the legs!",
+                "Player 1 changes levels!",
+                "Player 1 driving for the takedown!",
+            ],
+            2: [
+                "Player 2 shoots in!",
+                "Takedown attempt by Player 2!",
+                "Player 2 goes for the double leg!",
+                "Player 2 changes levels!",
+                "Player 2 looking for the takedown!",
+            ]
+        },
+        "guard": {
+            1: [
+                "Player 1 in defensive stance",
+                "Player 1 stays composed",
+                "Player 1 holds guard",
+                "Player 1 keeping tight defense",
+            ],
+            2: [
+                "Player 2 in defensive mode",
+                "Player 2 holds position",
+                "Player 2 staying cautious",
+                "Player 2 maintains guard",
+            ]
+        },
+        "clinch": {
+            1: [
+                "Player 1 initiates the clinch!",
+                "Player 1 ties up!",
+                "Clinch work from Player 1!",
+                "Player 1 controls the clinch!",
+            ],
+            2: [
+                "Player 2 in the clinch!",
+                "Player 2 ties up!",
+                "Clinch battle from Player 2!",
+                "Player 2 working the clinch!",
+            ]
+        }
     }
-    
-    # Clash commentary (when both attack simultaneously)
-    CLASH_TEMPLATES = [
-        "Both fighters exchange blows!",
-        "What a clash! Both players engage!",
-        "Simultaneous strikes! The intensity is rising!",
-        "Both fighters commit to the attack!",
-        "A fierce exchange between both players!",
-        "They're trading shots! This is heating up!",
-        "Both players refuse to back down!",
-        "An explosive exchange! The crowd would be on their feet!"
+
+    # Transitional phrases for natural flow
+    TRANSITIONS = [
+        "And now,",
+        "Here we go,",
+        "Watch this,",
+        "Look at this,",
+        "Beautiful,",
+        "Nice,",
+        "There it is,",
+        "Oh!",
     ]
-    
-    # Defensive phase commentary (one attacking, one neutral)
-    DEFENSIVE_TEMPLATES = [
-        "Player {atk} presses forward while Player {def} stays cautious.",
-        "Player {atk} on the offensive, Player {def} looking to counter.",
-        "Player {def} defends well against Player {atk}'s aggression.",
-        "Player {atk} applies pressure, but Player {def} holds strong.",
-        "Patient defense from Player {def} against Player {atk}'s assault."
-    ]
-    
-    # Low confidence commentary
-    LOW_CONFIDENCE_PHRASES = [
-        "possibly a {move}",
-        "attempting a {move}",
-        "looks like a {move}",
-        "maybe a {move}",
-        "transitioning with a {move}"
-    ]
-    
-    # Combo recognition patterns
-    COMBO_PATTERNS = {
-        ("jab", "cross"): "Player {p} executes the classic jab-cross combo!",
-        ("jab", "jab", "cross"): "Player {p} sets up the cross with a double jab!",
-        ("cross", "uppercut"): "Player {p} follows the cross with a devastating uppercut!",
-        ("front_kick", "roundhouse_kick"): "Player {p} chains kicks beautifully!",
-        ("jab", "front_kick"): "Player {p} mixes striking levels with a jab-kick combo!"
-    }
-    
-    # Neutral stretch commentary (when both neutral for many frames)
-    NEUTRAL_STRETCH_TEMPLATES = [
-        "Both fighters take a moment to reset...",
-        "A brief tactical pause as both players assess...",
-        "They're sizing each other up...",
-        "The pace slows as both fighters regroup...",
-        "Strategic positioning from both sides..."
-    ]
-    
-    def __init__(
-        self,
-        fps: int = 25,
-        context_window: int = 5,
-        min_confidence: float = 0.6,
-        neutral_threshold: int = 10,
-        enable_tts: bool = False
-    ):
-        """
-        Initialize the Commentary Engine.
-        
-        Args:
-            fps: Frames per second of source video
-            context_window: Number of recent moves to track for variety
-            min_confidence: Minimum confidence to generate detailed commentary
-            neutral_threshold: Consecutive neutral frames before "pause" comment
-            enable_tts: Enable text-to-speech output
-        """
+
+    def __init__(self, fps: float = 30, enable_tts: bool = False):
         self.fps = fps
-        self.context_window = context_window
-        self.min_confidence = min_confidence
-        self.neutral_threshold = neutral_threshold
         self.enable_tts = enable_tts
-        
-        # Initialize TTS engine if available and requested
-        self.tts_engine = None
-        if enable_tts and TTS_AVAILABLE:
-            try:
-                self.tts_engine = pyttsx3.init()
-                # Configure TTS properties
-                self.tts_engine.setProperty('rate', 175)  # Speed
-                self.tts_engine.setProperty('volume', 0.9)  # Volume
-                logging.info("TTS engine initialized successfully")
-            except Exception as e:
-                logging.error(f"Failed to initialize TTS: {e}")
-                self.tts_engine = None
-        elif enable_tts and not TTS_AVAILABLE:
-            logging.warning("TTS requested but pyttsx3 not installed")
-        
-        # Initialize context tracking
-        self.context = CommentaryContext(
-            recent_moves_p1=deque(maxlen=context_window),
-            recent_moves_p2=deque(maxlen=context_window),
-            last_templates_used=deque(maxlen=10),
-            consecutive_neutrals=0,
-            last_clash_frame=-100  # Start far in past
-        )
-        
-        self.logger = logging.getLogger(__name__)
-    
+        self.single_fighter_mode = False
+
     def generate_commentary(
         self,
         moves_json_path: str,
-        output_path: Optional[str] = None
+        output_path: str = None
     ) -> List[CommentaryLine]:
         """
-        Generate commentary from move classification JSON.
-        
-        Args:
-            moves_json_path: Path to classified moves JSON file
-            output_path: Optional path to save commentary (JSON and TXT)
-        
-        Returns:
-            List of CommentaryLine objects with timestamps
+        Generate commentary from moves JSON - ONE LINE PER MOVE
         """
-        self.logger.info(f"Generating commentary from: {moves_json_path}")
+        moves_json_path = Path(moves_json_path)
         
-        # Load move classifications
-        with open(moves_json_path, 'r') as f:
+        if not moves_json_path.exists():
+            raise FileNotFoundError(f"Moves JSON not found: {moves_json_path}")
+
+        with open(moves_json_path, "r") as f:
             moves_data = json.load(f)
+
+        metadata = moves_data.get("metadata", {})
+        moves = moves_data.get("moves", [])
+
+        print(f"Generating commentary for {len(moves)} moves...")
+
+        # Check if single fighter mode
+        player_ids = set(m.get("player_id", 1) for m in moves)
+        self.single_fighter_mode = len(player_ids) == 1
+
+        commentary_lines = []
         
-        commentary_lines: List[CommentaryLine] = []
+        # Opening line
+        commentary_lines.append(CommentaryLine(
+            text=self._get_opening_line(),
+            timestamp=0.0,
+            player=None,
+            confidence=1.0
+        ))
         
-        # Extract metadata
-        metadata = moves_data.get('metadata', {})
-        fps = metadata.get('fps', self.fps)
-        
-        # SINGLE-FIGHTER MODE DETECTION
-        # Count frames with Player 2 data to determine if dual-fighter or single-fighter
-        frames = moves_data.get('frames', {})
-        total_frames = len(frames)
-        player2_frames = sum(1 for frame_data in frames.values() if 'player_2' in frame_data)
-        player2_ratio = player2_frames / total_frames if total_frames > 0 else 0
-        
-        # If Player 2 appears in < 20% of frames, treat as single-fighter mode
-        single_fighter_mode = player2_ratio < 0.20
-        
-        if single_fighter_mode:
-            self.logger.info(f"Single-fighter mode detected (Player 2: {player2_ratio*100:.1f}% of frames)")
-            # Relax confidence threshold for single-fighter commentary
-            original_min_confidence = self.min_confidence
-            self.min_confidence = 0.4  # Lower threshold for single-fighter
-        else:
-            self.logger.info(f"Dual-fighter mode (Player 2: {player2_ratio*100:.1f}% of frames)")
-            single_fighter_mode = False
-        
-        # Store mode for later use
-        self.single_fighter_mode = single_fighter_mode
-        
-        # Process each frame
-        frame_keys = sorted(frames.keys(), key=lambda x: int(x.split('_')[1]))
-        
-        for frame_key in frame_keys:
-            frame_data = frames[frame_key]
-            frame_num = int(frame_key.split('_')[1])
-            timestamp = frame_num / fps
+        # Generate ONE line per move
+        for move in moves:
+            move_type = move.get("move_type", "neutral")
             
-            # Extract player moves and confidences
-            p1_data = frame_data.get('player_1', {})
-            p2_data = frame_data.get('player_2', {})
+            # Skip neutral moves
+            if move_type == "neutral":
+                continue
             
-            p1_move = p1_data.get('move', 'neutral')
-            p2_move = p2_data.get('move', 'neutral')
-            p1_conf = p1_data.get('confidence', 0.0)
-            p2_conf = p2_data.get('confidence', 0.0)
+            player_id = move.get("player_id", 1)
+            confidence = move.get("confidence", 0.5)
+            frame_start = move.get("frame_start", 0)
+            frame_end = move.get("frame_end", frame_start + 1)
+            duration_frames = frame_end - frame_start
             
-            # Generate commentary for this frame
-            line = self._generate_frame_commentary(
-                frame_num=frame_num,
+            # Calculate timestamp (use start of move)
+            timestamp = frame_start / self.fps
+            
+            # Generate commentary text
+            text = self._generate_commentary_text(move_type, player_id, duration_frames)
+            
+            line = CommentaryLine(
+                text=text,
                 timestamp=timestamp,
-                p1_move=p1_move,
-                p2_move=p2_move,
-                p1_conf=p1_conf,
-                p2_conf=p2_conf
+                player=player_id,
+                confidence=confidence,
+                move_type=move_type
             )
             
-            if line:
-                commentary_lines.append(line)
-                
-                # Speak commentary if TTS enabled
-                if self.tts_engine:
-                    self._speak_commentary(line.text)
+            commentary_lines.append(line)
         
-        self.logger.info(f"Generated {len(commentary_lines)} commentary lines")
-        
-        # Save commentary if output path provided
+        # Add closing commentary
+        if commentary_lines:
+            last_timestamp = commentary_lines[-1].timestamp + 2.0
+            commentary_lines.append(CommentaryLine(
+                text=self._get_closing_line(),
+                timestamp=last_timestamp,
+                player=None,
+                confidence=1.0
+            ))
+
+        print(f"✓ Generated {len(commentary_lines)} commentary lines")
+
         if output_path:
-            self.save_commentary(commentary_lines, output_path)
-        
-        # Restore original min_confidence if we modified it
-        if single_fighter_mode:
-            self.min_confidence = original_min_confidence
-        
+            self._save_outputs(commentary_lines, output_path, metadata)
+
         return commentary_lines
-    
-    def _generate_frame_commentary(
-        self,
-        frame_num: int,
-        timestamp: float,
-        p1_move: str,
-        p2_move: str,
-        p1_conf: float,
-        p2_conf: float
-    ) -> Optional[CommentaryLine]:
-        """
-        Generate commentary for a single frame.
-        
-        Args:
-            frame_num: Frame number
-            timestamp: Time in seconds
-            p1_move: Player 1's move
-            p2_move: Player 2's move
-            p1_conf: Player 1's confidence
-            p2_conf: Player 2's confidence
-        
-        Returns:
-            CommentaryLine or None if no commentary needed
-        """
-        # Update context
-        self.context.recent_moves_p1.append(p1_move)
-        self.context.recent_moves_p2.append(p2_move)
-        
-        # Check for both neutral (boring stretch)
-        if p1_move == "neutral" and p2_move == "neutral":
-            self.context.consecutive_neutrals += 1
-            
-            # Only comment on long neutral stretches
-            if self.context.consecutive_neutrals == self.neutral_threshold:
-                text = random.choice(self.NEUTRAL_STRETCH_TEMPLATES)
-                return CommentaryLine(
-                    timestamp=timestamp,
-                    frame_number=frame_num,
-                    text=text,
-                    event_type="analysis",
-                    player=None,
-                    confidence=(p1_conf + p2_conf) / 2
-                )
-            return None
-        else:
-            self.context.consecutive_neutrals = 0
-        
-        # SINGLE-FIGHTER MODE: Only generate commentary for Player 1
-        if getattr(self, 'single_fighter_mode', False):
-            # In single-fighter mode, ignore Player 2 completely
-            if p1_move != "neutral" and p1_conf >= self.min_confidence:
-                # Check for combo
-                combo_text = self._check_for_combo(1)
-                if combo_text:
-                    return CommentaryLine(
-                        timestamp=timestamp,
-                        frame_number=frame_num,
-                        text=combo_text,
-                        event_type="action",
-                        player=1,
-                        confidence=p1_conf
-                    )
-                
-                # Regular move commentary
-                text = self._get_move_commentary(1, p1_move, p1_conf)
-                return CommentaryLine(
-                    timestamp=timestamp,
-                    frame_number=frame_num,
-                    text=text,
-                    event_type="action",
-                    player=1,
-                    confidence=p1_conf
-                )
-            return None
-        
-        # DUAL-FIGHTER MODE: Use existing clash/defense logic
-        # Check for clash (both attacking)
-        if p1_move != "neutral" and p2_move != "neutral":
-            # Avoid commenting on every frame of a multi-frame clash
-            if frame_num - self.context.last_clash_frame > 5:
-                self.context.last_clash_frame = frame_num
-                text = random.choice(self.CLASH_TEMPLATES)
-                return CommentaryLine(
-                    timestamp=timestamp,
-                    frame_number=frame_num,
-                    text=text,
-                    event_type="clash",
-                    player=None,
-                    confidence=(p1_conf + p2_conf) / 2
-                )
-            return None
-        
-        # Check for defensive phase (one attacking, one neutral)
-        if (p1_move != "neutral" and p2_move == "neutral") or \
-           (p1_move == "neutral" and p2_move != "neutral"):
-            
-            atk_player = 1 if p1_move != "neutral" else 2
-            def_player = 2 if atk_player == 1 else 1
-            conf = p1_conf if atk_player == 1 else p2_conf
-            
-            # Only comment if attacker has good confidence
-            if conf >= self.min_confidence:
-                # Check for combo
-                combo_text = self._check_for_combo(atk_player)
-                if combo_text:
-                    return CommentaryLine(
-                        timestamp=timestamp,
-                        frame_number=frame_num,
-                        text=combo_text,
-                        event_type="action",
-                        player=atk_player,
-                        confidence=conf
-                    )
-                
-                # Regular move commentary
-                move = p1_move if atk_player == 1 else p2_move
-                text = self._get_move_commentary(atk_player, move, conf)
-                
-                return CommentaryLine(
-                    timestamp=timestamp,
-                    frame_number=frame_num,
-                    text=text,
-                    event_type="action",
-                    player=atk_player,
-                    confidence=conf
-                )
-        
-        return None
-    
-    def _check_for_combo(self, player: int) -> Optional[str]:
-        """
-        Check if recent moves form a recognized combo pattern.
-        
-        Args:
-            player: Player number (1 or 2)
-        
-        Returns:
-            Combo commentary text or None
-        """
-        recent = list(self.context.recent_moves_p1 if player == 1 
-                     else self.context.recent_moves_p2)
-        
-        # Only check combos if we have enough history
-        if len(recent) < 2:
-            return None
-        
-        # Check 3-move combos first
-        if len(recent) >= 3:
-            last_3 = tuple(recent[-3:])
-            if last_3 in self.COMBO_PATTERNS:
-                return self.COMBO_PATTERNS[last_3].format(p=player)
-        
-        # Check 2-move combos
-        last_2 = tuple(recent[-2:])
-        if last_2 in self.COMBO_PATTERNS:
-            # Ensure we haven't just used this combo template
-            template = self.COMBO_PATTERNS[last_2]
-            if template not in self.context.last_templates_used:
-                self.context.last_templates_used.append(template)
-                return template.format(p=player)
-        
-        return None
-    
-    def _get_move_commentary(
-        self,
-        player: int,
-        move: str,
-        confidence: float
+
+    def _generate_commentary_text(
+        self, 
+        move_type: str, 
+        player_id: int,
+        duration_frames: int
     ) -> str:
         """
-        Generate commentary for a single move.
-        
-        Args:
-            player: Player number (1 or 2)
-            move: Move name
-            confidence: Classification confidence
-        
-        Returns:
-            Commentary text
+        Generate natural commentary text for a move
         """
-        # Get templates for this move
-        templates = self.MOVE_TEMPLATES.get(move, self.MOVE_TEMPLATES["neutral"])
+        # Get base template
+        if move_type in self.COMMENTARY_TEMPLATES:
+            templates = self.COMMENTARY_TEMPLATES[move_type].get(player_id, [])
+            if templates:
+                text = random.choice(templates)
+            else:
+                text = f"Player {player_id} executes a {move_type.replace('_', ' ')}!"
+        else:
+            text = f"Player {player_id} with a {move_type.replace('_', ' ')}!"
         
-        # Filter out recently used templates for variety
-        available_templates = [
-            t for t in templates 
-            if t not in self.context.last_templates_used
-        ]
+        # Add transition occasionally for variety
+        if random.random() < 0.3:
+            transition = random.choice(self.TRANSITIONS)
+            text = f"{transition} {text.lower()}"
         
-        # If all templates used recently, reset
-        if not available_templates:
-            available_templates = templates
-        
-        # Select random template
-        template = random.choice(available_templates)
-        self.context.last_templates_used.append(template)
-        
-        # Generate base text
-        text = template.format(p=player)
-        
-        # Add low confidence phrasing if needed
-        if confidence < self.min_confidence:
-            low_conf_phrase = random.choice(self.LOW_CONFIDENCE_PHRASES)
-            text = f"Player {player} {low_conf_phrase.format(move=move)}."
+        # Add intensity modifier for longer moves
+        if duration_frames > 10:
+            intensifiers = ["That's a long", "Extended", "Committed"]
+            if random.random() < 0.4:
+                text = text.replace("a ", f"a {random.choice(intensifiers).lower()} ")
         
         return text
-    
-    def _speak_commentary(self, text: str):
-        """
-        Speak commentary text using TTS.
-        
-        Args:
-            text: Commentary text to speak
-        """
-        if self.tts_engine:
-            try:
-                self.tts_engine.say(text)
-                self.tts_engine.runAndWait()
-            except Exception as e:
-                self.logger.warning(f"TTS error: {e}")
-    
-    def save_commentary(
+
+    def _get_opening_line(self) -> str:
+        """Get opening commentary line"""
+        openings = [
+            "And here we go!",
+            "The fight is underway!",
+            "Let's get this fight started!",
+            "Fighters touch gloves, and we're off!",
+            "The action begins!",
+            "And the bell rings!",
+        ]
+        return random.choice(openings)
+
+    def _get_closing_line(self) -> str:
+        """Get closing commentary line"""
+        closings = [
+            "What a sequence!",
+            "Incredible action!",
+            "Both fighters gave it their all!",
+            "That's going to be hard to top!",
+            "What a display of skill!",
+            "The crowd is on their feet!",
+        ]
+        return random.choice(closings)
+
+    def _save_outputs(
         self,
-        commentary_lines: List[CommentaryLine],
-        output_path: str
+        lines: List[CommentaryLine],
+        output_path: str,
+        metadata: Dict
     ):
-        """
-        Save commentary to JSON and text files.
-        
-        Args:
-            commentary_lines: List of CommentaryLine objects
-            output_path: Base output path (extensions added automatically)
-        """
+        """Save commentary to JSON and TXT files"""
         output_path = Path(output_path)
         output_path.parent.mkdir(parents=True, exist_ok=True)
         
-        # Save as JSON
-        json_path = output_path.with_suffix('.json')
-        json_data = {
-            'metadata': {
-                'total_lines': len(commentary_lines),
-                'fps': self.fps,
-                'generated_at': str(Path(output_path).stem)
-            },
-            'commentary': [asdict(line) for line in commentary_lines]
-        }
-        
-        with open(json_path, 'w') as f:
-            json.dump(json_data, f, indent=2)
-        
-        self.logger.info(f"Saved JSON commentary to: {json_path}")
-        
-        # Save as text
-        txt_path = output_path.with_suffix('.txt')
-        with open(txt_path, 'w') as f:
-            f.write("=" * 70 + "\n")
-            f.write("NEUROCOMBAT - AI FIGHT COMMENTARY\n")
-            f.write("=" * 70 + "\n\n")
-            
-            for line in commentary_lines:
-                f.write(f"{line}\n")
-        
-        self.logger.info(f"Saved text commentary to: {txt_path}")
-
-
-# ==============================================================================
-# CONVENIENCE FUNCTIONS
-# ==============================================================================
-
-def generate_commentary(
-    moves_json_path: str,
-    fps: int = 25,
-    tts: bool = False,
-    output_path: Optional[str] = None
-) -> List[CommentaryLine]:
-    """
-    Convenience function to generate commentary from move classification JSON.
-    
-    Args:
-        moves_json_path: Path to classified moves JSON
-        fps: Frames per second of video
-        tts: Enable text-to-speech
-        output_path: Optional output path for saving commentary
-    
-    Returns:
-        List of CommentaryLine objects
-    
-    Example:
-        >>> commentary = generate_commentary(
-        ...     "artifacts/moves_fight1.json",
-        ...     fps=30,
-        ...     tts=True,
-        ...     output_path="artifacts/commentary_fight1"
-        ... )
-        >>> for line in commentary:
-        ...     print(line)
-    """
-    engine = CommentaryEngine(fps=fps, enable_tts=tts)
-    return engine.generate_commentary(moves_json_path, output_path)
-
-
-def get_commentary_for_frame(
-    p1_move: str,
-    p2_move: str,
-    p1_conf: float,
-    p2_conf: float,
-    frame_num: int = 0,
-    fps: int = 25
-) -> Optional[str]:
-    """
-    Generate a single line of commentary for a specific frame.
-    
-    Args:
-        p1_move: Player 1's move
-        p2_move: Player 2's move
-        p1_conf: Player 1's confidence
-        p2_conf: Player 2's confidence
-        frame_num: Frame number
-        fps: Frames per second
-    
-    Returns:
-        Commentary text or None
-    
-    Example:
-        >>> text = get_commentary_for_frame(
-        ...     "jab", "neutral", 0.92, 0.85, 150, 30
-        ... )
-        >>> print(text)
-        "Player 1 throws a quick jab!"
-    """
-    engine = CommentaryEngine(fps=fps)
-    timestamp = frame_num / fps
-    
-    line = engine._generate_frame_commentary(
-        frame_num, timestamp, p1_move, p2_move, p1_conf, p2_conf
-    )
-    
-    return line.text if line else None
-
-
-# ==============================================================================
-# MAIN EXECUTION (for testing)
-# ==============================================================================
-
-if __name__ == "__main__":
-    # Example usage
-    logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    )
-    
-    print("=" * 70)
-    print("COMMENTARY ENGINE V2 - Test Mode")
-    print("=" * 70)
-    
-    # Test with sample data
-    sample_moves = {
-        "metadata": {
-            "video_name": "test_fight.mp4",
-            "total_frames": 10,
-            "fps": 25
-        },
-        "frames": {
-            "frame_001": {
-                "player_1": {"move": "neutral", "confidence": 0.85},
-                "player_2": {"move": "neutral", "confidence": 0.82}
-            },
-            "frame_002": {
-                "player_1": {"move": "jab", "confidence": 0.92},
-                "player_2": {"move": "neutral", "confidence": 0.88}
-            },
-            "frame_003": {
-                "player_1": {"move": "cross", "confidence": 0.89},
-                "player_2": {"move": "neutral", "confidence": 0.85}
-            },
-            "frame_004": {
-                "player_1": {"move": "neutral", "confidence": 0.83},
-                "player_2": {"move": "front_kick", "confidence": 0.91}
-            },
-            "frame_005": {
-                "player_1": {"move": "jab", "confidence": 0.87},
-                "player_2": {"move": "cross", "confidence": 0.90}
+        # JSON output
+        json_path = output_path.with_suffix(".json")
+        output_data = {
+            "metadata": metadata,
+            "commentary": [asdict(line) for line in lines],
+            "stats": {
+                "total_lines": len(lines),
+                "player_1_lines": sum(1 for l in lines if l.player == 1),
+                "player_2_lines": sum(1 for l in lines if l.player == 2),
+                "general_lines": sum(1 for l in lines if l.player is None),
             }
         }
-    }
-    
-    # Save sample data
-    import tempfile
-    with tempfile.NamedTemporaryFile(mode='w', suffix='.json', delete=False) as f:
-        json.dump(sample_moves, f)
-        sample_path = f.name
-    
-    # Generate commentary
-    print("\n🎙️  Generating commentary...\n")
-    commentary = generate_commentary(sample_path, fps=25, tts=False)
-    
-    print("\n📢 Generated Commentary:\n")
-    for line in commentary:
-        print(f"  {line}")
-    
-    print(f"\n✅ Successfully generated {len(commentary)} commentary lines!")
-    print("=" * 70)
+        
+        with open(json_path, "w") as f:
+            json.dump(output_data, f, indent=2)
+        
+        print(f"✓ Saved commentary JSON to {json_path}")
+        
+        # TXT output
+        txt_path = output_path.with_suffix(".txt")
+        with open(txt_path, "w") as f:
+            f.write("=" * 60 + "\n")
+            f.write("NEUROCOMBAT COMMENTARY TRANSCRIPT\n")
+            f.write("=" * 60 + "\n\n")
+            
+            for line in lines:
+                timestamp_str = f"{int(line.timestamp//60):02d}:{int(line.timestamp%60):02d}"
+                player_str = f"[P{line.player}]" if line.player else "[GEN]"
+                f.write(f"{timestamp_str} {player_str} {line.text}\n")
+        
+        print(f"✓ Saved commentary transcript to {txt_path}")
+        
+        if self.enable_tts:
+            self._generate_tts(lines, output_path)
+
+    def _generate_tts(self, lines: List[CommentaryLine], output_path: Path):
+        """Generate TTS audio (placeholder)"""
+        try:
+            import pyttsx3
+            engine = pyttsx3.init()
+            
+            audio_dir = output_path.parent / "audio"
+            audio_dir.mkdir(exist_ok=True)
+            
+            for i, line in enumerate(lines):
+                audio_file = audio_dir / f"line_{i:04d}.mp3"
+                engine.save_to_file(line.text, str(audio_file))
+            
+            engine.runAndWait()
+            print(f"✓ Generated TTS audio in {audio_dir}")
+        except ImportError:
+            print("⚠️ pyttsx3 not installed, skipping TTS generation")
+        except Exception as e:
+            print(f"⚠️ TTS generation failed: {e}")

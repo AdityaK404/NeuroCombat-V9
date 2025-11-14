@@ -115,7 +115,7 @@ class NeuroCombatPipeline:
             output_dir.mkdir(parents=True, exist_ok=True)
             
             output_video_path = output_dir / f"{video_path.stem}_annotated.mp4"
-            fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+            fourcc = cv2.VideoWriter_fourcc(*"mp4v")
             video_writer = cv2.VideoWriter(``
                 str(output_video_path),
                 fourcc,
@@ -171,9 +171,11 @@ class NeuroCombatPipeline:
                         logger.info("User interrupted processing")
                         break
                 
-                # Save frame
+                # Save frame (IMPORTANT FIX: convert BGR → RGB)
                 if video_writer:
-                    video_writer.write(annotated_frame)
+                    rgb_frame = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
+                    video_writer.write(rgb_frame)
+
                 
                 frame_idx += 1
                 
